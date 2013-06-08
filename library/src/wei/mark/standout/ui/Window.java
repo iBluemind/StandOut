@@ -299,7 +299,7 @@ public class Window extends FrameLayout {
 				View content = findViewById(R.id.content);
 				if (focus) {
 					// gaining focus
-					content.setBackgroundResource(R.drawable.border_focused);
+//					content.setBackgroundResource(R.drawable.border_focused);
 				} else {
 					// losing focus
 					if (Utils
