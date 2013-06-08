@@ -1118,19 +1118,19 @@ public abstract class StandOutWindow extends Service {
 		// show the notification
 		if (notification != null) {
 			notification.flags = notification.flags
-					| Notification.FLAG_NO_CLEAR;
+					| Notification.FLAG_AUTO_CANCEL;
 
 			// only show notification if not shown before
 			if (!startedForeground) {
 				// tell Android system to show notification
 				startForeground(
-						getClass().hashCode() + ONGOING_NOTIFICATION_ID,
+						getClass().hashCode() + id,
 						notification);
 				startedForeground = true;
 			} else {
 				// update notification if shown before
 				mNotificationManager.notify(getClass().hashCode()
-						+ ONGOING_NOTIFICATION_ID, notification);
+						+ id, notification);
 			}
 		} else {
 			// notification can only be null if it was provided before
@@ -1175,10 +1175,14 @@ public abstract class StandOutWindow extends Service {
 			return;
 		}
 
+		mNotificationManager.cancel(getClass().hashCode()
+						+ id);
+		
 		// check if hide enabled
 		if (Utils.isSet(window.flags, StandOutFlags.FLAG_WINDOW_HIDE_ENABLE)) {
+			
 			window.visibility = Window.VISIBILITY_TRANSITION;
-
+			
 			// get the hidden notification for this view
 			Notification notification = getHiddenNotification(id);
 
