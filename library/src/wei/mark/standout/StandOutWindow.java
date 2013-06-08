@@ -778,8 +778,7 @@ public abstract class StandOutWindow extends Service {
 
 		// add default drop down items
 		items.add(new DropDownListItem(
-				android.R.drawable.ic_menu_close_clear_cancel, "Quit "
-						+ getAppName(), new Runnable() {
+				android.R.drawable.ic_menu_close_clear_cancel, "´Ý±â", new Runnable() {
 
 					@Override
 					public void run() {
